@@ -8,7 +8,7 @@
 #define Dotnet472Enu "설치 .Net Framework " + GetFileVersion("NDP472-KB4054530-x86-x64-AllOS-ENU.exe")
 #define Dotnet472Kor "설치 .Net Framework 한글언어팩 " + GetFileVersion("NDP472-KB4054530-x86-x64-AllOS-KOR.exe")
 
-#define FullInstall
+//#define FullInstall
 
 [Setup]
 AppId={{880644A9-9C9A-4916-96B5-2348F2CD97A1}}
