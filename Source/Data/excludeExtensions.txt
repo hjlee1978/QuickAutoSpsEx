@@ -1,0 +1,14 @@
+.pgb
+.xml
+.gitignore
+.cd
+.xls
+.pdb
+.trk
+.zip
+.cache
+.md
+.user
+.pfx
+.CopyComplete
+.lastcodeanalysissucceeded

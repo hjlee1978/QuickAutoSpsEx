@@ -1,0 +1,5 @@
+.sln
+.csproj
+.manifest
+.settings
+.config

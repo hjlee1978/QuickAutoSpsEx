@@ -63,7 +63,10 @@ namespace FileInfoExtractor
 
         protected override void HashCore(byte[] array, int ibStart, int cbSize)
         {
-            hash = CalculateHash(table, hash, array, ibStart, cbSize);
+            if (array != null)
+            {
+                hash = CalculateHash(table, hash, array, ibStart, cbSize); 
+            }
         }
 
         protected override byte[] HashFinal()
@@ -87,7 +90,14 @@ namespace FileInfoExtractor
 
         public static UInt32 Compute(UInt32 polynomial, UInt32 seed, byte[] buffer)
         {
-            return ~CalculateHash(InitializeTable(polynomial), seed, buffer, 0, buffer.Length);
+            if (buffer != null)
+            {
+                return ~CalculateHash(InitializeTable(polynomial), seed, buffer, 0, buffer.Length);
+            }
+            else
+            {
+                return UInt32.MinValue;
+            }
         }
 
         static UInt32[] InitializeTable(UInt32 polynomial)
@@ -100,10 +110,16 @@ namespace FileInfoExtractor
             {
                 var entry = (UInt32)i;
                 for (var j = 0; j < 8; j++)
+                {
                     if ((entry & 1) == 1)
+                    {
                         entry = (entry >> 1) ^ polynomial;
+                    }
                     else
-                        entry = entry >> 1;
+                    {
+                        entry >>= 1;
+                    }
+                }
                 createTable[i] = entry;
             }
 

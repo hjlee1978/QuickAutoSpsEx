@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickAutoSps", "QuickAutoSps.csproj", "{CF015663-BAA7-4A23-849E-7DA731CDE137}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickAutoSpsEx", "QuickAutoSpsEx.csproj", "{CF015663-BAA7-4A23-849E-7DA731CDE137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {573B0F40-E51B-4D6B-B5C9-A857E1195870}
 	EndGlobalSection
 EndGlobal

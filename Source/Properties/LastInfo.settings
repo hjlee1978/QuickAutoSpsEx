@@ -15,10 +15,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="strExeNumberBase" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">C</Value>
     </Setting>
     <Setting Name="strLibNumberBase" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">L</Value>
     </Setting>
     <Setting Name="bRstTypeHwp" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -28,6 +28,15 @@
     </Setting>
     <Setting Name="bResultAutoRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="strTrimPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="strHeadPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="strEtcNumberBase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C</Value>
     </Setting>
   </Settings>
 </SettingsFile>

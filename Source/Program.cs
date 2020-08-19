@@ -23,6 +23,8 @@ using System.Windows.Forms;
 
 namespace FileInfoExtractor
 {
+    #pragma warning disable CA2000 // 범위를 벗어나기 전에 개체를 삭제하십시오.
+
     static class Program
     {
         /// <summary>
@@ -31,12 +33,11 @@ namespace FileInfoExtractor
         [STAThread]
         static void Main()
         {
-
-            QuickAutoSpsForm.dllCopy();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new QuickAutoSpsForm());
         }
     }
+
+    #pragma warning restore CA2000 // 범위를 벗어나기 전에 개체를 삭제하십시오.
 }

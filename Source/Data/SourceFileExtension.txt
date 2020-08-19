@@ -1,0 +1,12 @@
+.h
+.hpp
+.c
+.cpp
+.cs
+.resx
+.ico
+.png
+.licx
+.ini
+.cfg
+.dat

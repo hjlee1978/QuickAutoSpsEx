@@ -118,16 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AxInterop_HWPCONTROLLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\AxInterop.HWPCONTROLLib.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="execute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\execute.hwp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Interop_HWPCONTROLLib" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Interop.HWPCONTROLLib.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="projet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\projet.hwp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="temp1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\temp1.hwp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="temp2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\temp2.hwp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="source" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\source.hwp;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

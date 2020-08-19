@@ -1,0 +1,16 @@
+\.git
+\.vs
+\obj
+\Debug
+obj\
+Debug\
+Release\
+\packages
+\x86
+\TestProgram
+\TestResults
+\UnitTest
+\Tools
+\UnitTest
+\Batchfile
+\library
