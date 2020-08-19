@@ -21,7 +21,11 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={commonpf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
+#ifdef FullInstall
+OutputBaseFilename={#MyAppName}_Setup_Full_{#MyAppVersion}
+#else //FullInstall
 OutputBaseFilename={#MyAppName}_Setup_{#MyAppVersion}
+#endif //FullInstall
 Compression=lzma
 SolidCompression=yes
 LicenseFile = LICENSE.txt
