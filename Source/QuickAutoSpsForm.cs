@@ -58,7 +58,7 @@ namespace FileInfoExtractor
         /// <summary>
         /// 제외 디렉토리 설정 파일
         /// </summary>
-        const string excludeDirectories = ".\\Data\\excludeDirectories.txt";
+        const string excludeDirectoriesFilePath = ".\\Data\\excludeDirectories.txt";
 
         /// <summary>
         /// 확장자 설정 목록
@@ -1120,7 +1120,7 @@ namespace FileInfoExtractor
             extensionMapToClass = LoadFileClassRule(classByExtensionPath);
             subStringMapToClass = LoadFileClassRule(classBySubStringPath);
             ExcludeExtensions = LoadFileExtensions(excludeExtensionFilePath);
-            ExcludeDirectories = LoadDirectories(excludeDirectories);
+            ExcludeDirectories = LoadDirectories(excludeDirectoriesFilePath);
             SourceExtensions = LoadFileExtensions(sourceExtensionFilePath);
             ProjectExtensions = LoadFileExtensions(projectExtensionFilePath);
         }
@@ -1469,15 +1469,25 @@ namespace FileInfoExtractor
                     extensionMapToClass = configForm.GetExtensionMap();
                     SaveFileClassRule(extensionMapToClass, classByExtensionPath);
                 };
-                configForm.ActionLoadExcludeExtensions= () =>
+                configForm.ActionLoadExcludeExtensions = () =>
                 {
                     ExcludeExtensions = LoadFileExtensions(excludeExtensionFilePath);
                     configForm.SetExcludeExtensions(ExcludeExtensions);
                 };
+                configForm.ActionSaveExcludeExtensions = () =>
+                {
+                    ExcludeExtensions = configForm.GetExcludeExtensions();
+                    SaveFileExtensions(ExcludeExtensions, excludeExtensionFilePath);
+                };
                 configForm.ActionLoadExcludeDirectories = () =>
                 {
-                    ExcludeDirectories = LoadDirectories(excludeDirectories);
+                    ExcludeDirectories = LoadDirectories(excludeDirectoriesFilePath);
                     configForm.SetExcludeDirectories(ExcludeDirectories);
+                };
+                configForm.ActionSaveExcludeDirectories = () =>
+                {
+                    ExcludeDirectories = configForm.GetExcludeDirectories();
+                    SaveFileExtensions(ExcludeDirectories, excludeDirectoriesFilePath);
                 };
                 configForm.ActionLoadSourceExtensions = () =>
                 {

@@ -35,7 +35,7 @@ Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
 Source: "../Source/bin/Release/*.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "../Source/bin/Release/*.config"; DestDir: "{app}"; Flags: ignoreversion
 Source: "../Source/bin/Release/*.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "../Source/bin/Release/Data/*.*"; DestDir: "{app}"; Flags: ignoreversion
+Source: "../Source/bin/Release/Data/*.*"; DestDir: "{app}\Data\"; Flags: ignoreversion
 
 #ifdef FullInstall
 Source: "NDP472-KB4054530-x86-x64-AllOS-ENU.exe"; DestDir: "{app}\temp\"; Flags: ignoreversion deleteafterinstall; Check: IsNotFrameworkInstalled

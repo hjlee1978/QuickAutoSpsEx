@@ -81,6 +81,14 @@ namespace FileInfoExtractor
             }
         }
 
+        /// <summary>
+        /// 제외 확장자 목록 반환
+        /// </summary>
+        public List<string> GetExcludeExtensions()
+        {
+            return GetList(textBoxExcludeExtensions);
+        }
+
         public void SetExcludeDirectories(List<string> list)
         {
             if (list != null)
@@ -92,6 +100,14 @@ namespace FileInfoExtractor
                 }
                 textBoxExcludeDirectories.Text = builer.ToString();
             }
+        }
+
+        /// <summary>
+        /// 제외 디렉토리 목록 반환
+        /// </summary>
+        public List<string> GetExcludeDirectories()
+        {
+            return GetList(textBoxExcludeDirectories);
         }
 
         public void SetSourceExtensions(List<string> list)
