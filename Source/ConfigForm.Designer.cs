@@ -56,6 +56,11 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.buttonProjectExtensionSave = new System.Windows.Forms.Button();
             this.buttonProjectExtensionLoad = new System.Windows.Forms.Button();
+            this.labelExcludeLine = new System.Windows.Forms.Label();
+            this.textBoxExcludeLine = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonExcludeLineSave = new System.Windows.Forms.Button();
+            this.buttonExcludeLineLoad = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,24 +68,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtension)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tableLayoutPanel1.Controls.Add(this.panel4, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxExcludeDirectories, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelExcludeExtension, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewExtension, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelExtension, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.labelExcludePath, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxExcludeExtensions, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelSource, 3, 0);
@@ -88,6 +95,9 @@
             this.tableLayoutPanel1.Controls.Add(this.labelProject, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxProjectExtensions, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.labelExcludeLine, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxExcludeLine, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -95,16 +105,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(984, 421);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1168, 421);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.buttonSourceExtensionsSave);
             this.panel4.Controls.Add(this.buttonSourceExtensionsLoad);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(627, 384);
+            this.panel4.Location = new System.Drawing.Point(631, 384);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(174, 34);
             this.panel4.TabIndex = 13;
@@ -131,8 +139,7 @@
             // 
             // textBoxExcludeDirectories
             // 
-            this.textBoxExcludeDirectories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxExcludeDirectories.Location = new System.Drawing.Point(447, 43);
+            this.textBoxExcludeDirectories.Location = new System.Drawing.Point(451, 43);
             this.textBoxExcludeDirectories.Multiline = true;
             this.textBoxExcludeDirectories.Name = "textBoxExcludeDirectories";
             this.textBoxExcludeDirectories.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -143,8 +150,7 @@
             // 
             this.panel3.Controls.Add(this.buttonExcludeDirectoriesSave);
             this.panel3.Controls.Add(this.buttonExcludeDirectoriesLoad);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(447, 384);
+            this.panel3.Location = new System.Drawing.Point(451, 384);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(174, 34);
             this.panel3.TabIndex = 8;
@@ -173,8 +179,7 @@
             // 
             this.panel2.Controls.Add(this.buttonExcludeExtensionSave);
             this.panel2.Controls.Add(this.buttonExcludeExtensionLoad);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(267, 384);
+            this.panel2.Location = new System.Drawing.Point(271, 384);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(174, 34);
             this.panel2.TabIndex = 5;
@@ -201,8 +206,7 @@
             // 
             // labelExcludeExtension
             // 
-            this.labelExcludeExtension.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelExcludeExtension.Location = new System.Drawing.Point(267, 0);
+            this.labelExcludeExtension.Location = new System.Drawing.Point(271, 0);
             this.labelExcludeExtension.Name = "labelExcludeExtension";
             this.labelExcludeExtension.Size = new System.Drawing.Size(174, 40);
             this.labelExcludeExtension.TabIndex = 3;
@@ -216,7 +220,6 @@
             this.dataGridViewExtension.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnExtension,
             this.ColumnExtensionDesc});
-            this.dataGridViewExtension.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewExtension.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewExtension.Name = "dataGridViewExtension";
             this.dataGridViewExtension.RowTemplate.Height = 23;
@@ -238,7 +241,6 @@
             // 
             // labelExtension
             // 
-            this.labelExtension.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelExtension.Location = new System.Drawing.Point(3, 0);
             this.labelExtension.Name = "labelExtension";
             this.labelExtension.Size = new System.Drawing.Size(258, 40);
@@ -250,7 +252,6 @@
             // 
             this.panel1.Controls.Add(this.buttonExtensionSave);
             this.panel1.Controls.Add(this.buttonExtensionLoad);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 384);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(258, 34);
@@ -278,8 +279,7 @@
             // 
             // labelExcludePath
             // 
-            this.labelExcludePath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelExcludePath.Location = new System.Drawing.Point(447, 0);
+            this.labelExcludePath.Location = new System.Drawing.Point(451, 0);
             this.labelExcludePath.Name = "labelExcludePath";
             this.labelExcludePath.Size = new System.Drawing.Size(174, 40);
             this.labelExcludePath.TabIndex = 6;
@@ -288,8 +288,7 @@
             // 
             // textBoxExcludeExtensions
             // 
-            this.textBoxExcludeExtensions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxExcludeExtensions.Location = new System.Drawing.Point(267, 43);
+            this.textBoxExcludeExtensions.Location = new System.Drawing.Point(271, 43);
             this.textBoxExcludeExtensions.Multiline = true;
             this.textBoxExcludeExtensions.Name = "textBoxExcludeExtensions";
             this.textBoxExcludeExtensions.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -298,8 +297,7 @@
             // 
             // labelSource
             // 
-            this.labelSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelSource.Location = new System.Drawing.Point(627, 0);
+            this.labelSource.Location = new System.Drawing.Point(631, 0);
             this.labelSource.Name = "labelSource";
             this.labelSource.Size = new System.Drawing.Size(174, 40);
             this.labelSource.TabIndex = 11;
@@ -308,8 +306,7 @@
             // 
             // textBoxSourceExtensions
             // 
-            this.textBoxSourceExtensions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxSourceExtensions.Location = new System.Drawing.Point(627, 43);
+            this.textBoxSourceExtensions.Location = new System.Drawing.Point(631, 43);
             this.textBoxSourceExtensions.Multiline = true;
             this.textBoxSourceExtensions.Name = "textBoxSourceExtensions";
             this.textBoxSourceExtensions.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -318,8 +315,7 @@
             // 
             // labelProject
             // 
-            this.labelProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelProject.Location = new System.Drawing.Point(807, 0);
+            this.labelProject.Location = new System.Drawing.Point(811, 0);
             this.labelProject.Name = "labelProject";
             this.labelProject.Size = new System.Drawing.Size(174, 40);
             this.labelProject.TabIndex = 14;
@@ -328,8 +324,7 @@
             // 
             // textBoxProjectExtensions
             // 
-            this.textBoxProjectExtensions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxProjectExtensions.Location = new System.Drawing.Point(807, 43);
+            this.textBoxProjectExtensions.Location = new System.Drawing.Point(811, 43);
             this.textBoxProjectExtensions.Multiline = true;
             this.textBoxProjectExtensions.Name = "textBoxProjectExtensions";
             this.textBoxProjectExtensions.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -340,7 +335,7 @@
             // 
             this.panel5.Controls.Add(this.buttonProjectExtensionSave);
             this.panel5.Controls.Add(this.buttonProjectExtensionLoad);
-            this.panel5.Location = new System.Drawing.Point(807, 384);
+            this.panel5.Location = new System.Drawing.Point(811, 384);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(174, 34);
             this.panel5.TabIndex = 16;
@@ -365,11 +360,58 @@
             this.buttonProjectExtensionLoad.UseVisualStyleBackColor = true;
             this.buttonProjectExtensionLoad.Click += new System.EventHandler(this.ButtonProjectExtensionLoad_Click);
             // 
+            // labelExcludeLine
+            // 
+            this.labelExcludeLine.Location = new System.Drawing.Point(991, 0);
+            this.labelExcludeLine.Name = "labelExcludeLine";
+            this.labelExcludeLine.Size = new System.Drawing.Size(174, 40);
+            this.labelExcludeLine.TabIndex = 17;
+            this.labelExcludeLine.Text = "라인수제외확장자";
+            this.labelExcludeLine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBoxExcludeLine
+            // 
+            this.textBoxExcludeLine.Location = new System.Drawing.Point(991, 43);
+            this.textBoxExcludeLine.Multiline = true;
+            this.textBoxExcludeLine.Name = "textBoxExcludeLine";
+            this.textBoxExcludeLine.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxExcludeLine.Size = new System.Drawing.Size(174, 335);
+            this.textBoxExcludeLine.TabIndex = 18;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.buttonExcludeLineSave);
+            this.panel6.Controls.Add(this.buttonExcludeLineLoad);
+            this.panel6.Location = new System.Drawing.Point(991, 384);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(174, 34);
+            this.panel6.TabIndex = 19;
+            // 
+            // buttonExcludeLineSave
+            // 
+            this.buttonExcludeLineSave.Location = new System.Drawing.Point(89, 6);
+            this.buttonExcludeLineSave.Name = "buttonExcludeLineSave";
+            this.buttonExcludeLineSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcludeLineSave.TabIndex = 1;
+            this.buttonExcludeLineSave.Text = "저장";
+            this.buttonExcludeLineSave.UseVisualStyleBackColor = true;
+            this.buttonExcludeLineSave.Click += new System.EventHandler(this.ButtonExcludeLineSave_Click);
+            // 
+            // buttonExcludeLineLoad
+            // 
+            this.buttonExcludeLineLoad.Location = new System.Drawing.Point(8, 6);
+            this.buttonExcludeLineLoad.Name = "buttonExcludeLineLoad";
+            this.buttonExcludeLineLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcludeLineLoad.TabIndex = 0;
+            this.buttonExcludeLineLoad.Text = "읽기";
+            this.buttonExcludeLineLoad.UseVisualStyleBackColor = true;
+            this.buttonExcludeLineLoad.Click += new System.EventHandler(this.ButtonExcludeLineLoad_Click);
+            // 
             // ConfigForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 421);
+            this.ClientSize = new System.Drawing.Size(1168, 421);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(1000, 460);
             this.Name = "ConfigForm";
@@ -382,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtension)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -416,5 +459,10 @@
         private System.Windows.Forms.Button buttonProjectExtensionLoad;
         private System.Windows.Forms.Label labelProject;
         private System.Windows.Forms.TextBox textBoxProjectExtensions;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button buttonExcludeLineSave;
+        private System.Windows.Forms.Button buttonExcludeLineLoad;
+        private System.Windows.Forms.Label labelExcludeLine;
+        private System.Windows.Forms.TextBox textBoxExcludeLine;
     }
 }

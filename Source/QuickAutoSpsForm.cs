@@ -56,6 +56,10 @@ namespace FileInfoExtractor
         /// </summary>
         const string projectExtensionFilePath = ".\\Data\\ProjectFileExtension.txt";
         /// <summary>
+        /// 라인수 체크 제외 확장자 설정 파일
+        /// </summary>
+        const string excludeLineExtensionFilePath = ".\\Data\\excludeLineFileExtension.txt";
+        /// <summary>
         /// 제외 디렉토리 설정 파일
         /// </summary>
         const string excludeDirectoriesFilePath = ".\\Data\\excludeDirectories.txt";
@@ -83,6 +87,11 @@ namespace FileInfoExtractor
         /// 프로젝트 파일 확장자 목록
         /// </summary>
         List<string> ProjectExtensions = new List<string>();
+
+        /// <summary>
+        /// 라인수 체크 제외 확장자 목록
+        /// </summary>
+        List<string> ExcludeLineExtensions = new List<string>();
         
         /// <summary>
         /// 제외 디렉토리 목록
@@ -322,24 +331,26 @@ namespace FileInfoExtractor
 
                     // 라인 수
                     string[] lines = null;
-
-                    if(rbSrcTypeSrc.Checked)
+                    if (ExcludeLineExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase) == false)
                     {
-                        if(SourceExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                        if (rbSrcTypeSrc.Checked)
+                        {
+                            if (SourceExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                            {
+                                lines = File.ReadAllLines(info.FullName);
+                            }
+                        }
+                        else if (rbSrcTypeProject.Checked)
+                        {
+                            if (ProjectExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                            {
+                                lines = File.ReadAllLines(info.FullName);
+                            }
+                        }
+                        else
                         {
                             lines = File.ReadAllLines(info.FullName);
                         }
-                    }
-                    else if(rbSrcTypeProject.Checked)
-                    {
-                        if (ProjectExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
-                        {
-                            lines = File.ReadAllLines(info.FullName);
-                        }
-                    }
-                    else
-                    {
-                        lines = File.ReadAllLines(info.FullName);
                     }
 
                     // 조립
@@ -587,24 +598,26 @@ namespace FileInfoExtractor
 
                     // 라인 수(소스코드, 프로젝트)
                     string[] lines = null;
-
-                    if (rbSrcTypeSrc.Checked)
+                    if(ExcludeLineExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase) == false)
                     {
-                        if (SourceExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                        if (rbSrcTypeSrc.Checked)
+                        {
+                            if (SourceExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                            {
+                                lines = File.ReadAllLines(info.FullName);
+                            }
+                        }
+                        else if (rbSrcTypeProject.Checked)
+                        {
+                            if (ProjectExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
+                            {
+                                lines = File.ReadAllLines(info.FullName);
+                            }
+                        }
+                        else
                         {
                             lines = File.ReadAllLines(info.FullName);
                         }
-                    }
-                    else if (rbSrcTypeProject.Checked)
-                    {
-                        if (ProjectExtensions.Contains(info.Extension, StringComparer.OrdinalIgnoreCase))
-                        {
-                            lines = File.ReadAllLines(info.FullName);
-                        }
-                    }
-                    else
-                    {
-                        lines = File.ReadAllLines(info.FullName);
                     }
 
                     // 조립
@@ -1123,6 +1136,7 @@ namespace FileInfoExtractor
             ExcludeDirectories = LoadDirectories(excludeDirectoriesFilePath);
             SourceExtensions = LoadFileExtensions(sourceExtensionFilePath);
             ProjectExtensions = LoadFileExtensions(projectExtensionFilePath);
+            ExcludeLineExtensions = LoadFileExtensions(excludeLineExtensionFilePath);
         }
 
         private string GetFileClassName(FileInfo fileInfo)
@@ -1506,8 +1520,18 @@ namespace FileInfoExtractor
                 };
                 configForm.ActionSaveProjectExtensions = () =>
                 {
-                    ProjectExtensions = configForm.GetSourceExtensions();
+                    ProjectExtensions = configForm.GetProjectExtensions();
                     SaveFileExtensions(ProjectExtensions, projectExtensionFilePath);
+                };
+                configForm.ActionLoadExcludeLineExtensions = () =>
+                {
+                    ExcludeLineExtensions = LoadFileExtensions(excludeLineExtensionFilePath);
+                    configForm.SetExcludeLineExtensions(ExcludeLineExtensions);
+                };
+                configForm.ActionSaveExcludeLineExtensions = () =>
+                {
+                    ExcludeLineExtensions = configForm.GetExcludeLineExtensions();
+                    SaveFileExtensions(ExcludeLineExtensions, excludeLineExtensionFilePath);
                 };
 
                 configForm.ActionLoadExtensionList?.Invoke();
@@ -1515,6 +1539,7 @@ namespace FileInfoExtractor
                 configForm.ActionLoadExcludeDirectories?.Invoke();
                 configForm.ActionLoadSourceExtensions?.Invoke();
                 configForm.ActionLoadProjectExtensions?.Invoke();
+                configForm.ActionLoadExcludeLineExtensions?.Invoke();
 
                 configForm.ShowDialog();
             }

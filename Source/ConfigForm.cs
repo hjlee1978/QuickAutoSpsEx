@@ -58,6 +58,15 @@ namespace FileInfoExtractor
         /// </summary>
         public Action ActionSaveProjectExtensions { get; set; }
 
+        /// <summary>
+        /// 라인수 체크 제외 확장자 읽기 Action
+        /// </summary>
+        public Action ActionLoadExcludeLineExtensions { get; set; }
+        /// <summary>
+        /// 라인수 체크 제외 확장자 저장 Action
+        /// </summary>
+        public Action ActionSaveExcludeLineExtensions { get; set; }
+
         public ConfigForm()
         {
             InitializeComponent();
@@ -123,6 +132,21 @@ namespace FileInfoExtractor
         public void SetProjectExtensions(List<string> list)
         {
             SetList(textBoxProjectExtensions, list);
+        }
+
+        public List<string> GetProjectExtensions()
+        {
+            return GetList(textBoxProjectExtensions);
+        }
+
+        public List<string> GetExcludeLineExtensions()
+        {
+            return GetList(textBoxExcludeLine);
+        }
+
+        public void SetExcludeLineExtensions(List<string> list)
+        {
+            SetList(textBoxExcludeLine, list);
         }
 
         private static void SetList(TextBox box, List<string> list)
@@ -256,7 +280,17 @@ namespace FileInfoExtractor
 
         private void ButtonProjectExtensionSave_Click(object sender, EventArgs e)
         {
+            ActionSaveProjectExtensions?.Invoke();
+        }
 
+        private void ButtonExcludeLineLoad_Click(object sender, EventArgs e)
+        {
+            ActionLoadExcludeLineExtensions?.Invoke();
+        }
+
+        private void ButtonExcludeLineSave_Click(object sender, EventArgs e)
+        {
+            ActionSaveExcludeLineExtensions?.Invoke();
         }
     }
 }
