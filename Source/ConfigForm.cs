@@ -59,13 +59,13 @@ namespace FileInfoExtractor
         public Action ActionSaveProjectExtensions { get; set; }
 
         /// <summary>
-        /// 라인수 체크 제외 확장자 읽기 Action
+        /// 라인수 체크 확장자 읽기 Action
         /// </summary>
-        public Action ActionLoadExcludeLineExtensions { get; set; }
+        public Action ActionLoadLineExtensions { get; set; }
         /// <summary>
-        /// 라인수 체크 제외 확장자 저장 Action
+        /// 라인수 체크 확장자 저장 Action
         /// </summary>
-        public Action ActionSaveExcludeLineExtensions { get; set; }
+        public Action ActionSaveLineExtensions { get; set; }
 
         public ConfigForm()
         {
@@ -139,14 +139,14 @@ namespace FileInfoExtractor
             return GetList(textBoxProjectExtensions);
         }
 
-        public List<string> GetExcludeLineExtensions()
+        public List<string> GetLineExtensions()
         {
-            return GetList(textBoxExcludeLine);
+            return GetList(textBoxLineExtension);
         }
 
-        public void SetExcludeLineExtensions(List<string> list)
+        public void SetLineExtensions(List<string> list)
         {
-            SetList(textBoxExcludeLine, list);
+            SetList(textBoxLineExtension, list);
         }
 
         private static void SetList(TextBox box, List<string> list)
@@ -283,14 +283,14 @@ namespace FileInfoExtractor
             ActionSaveProjectExtensions?.Invoke();
         }
 
-        private void ButtonExcludeLineLoad_Click(object sender, EventArgs e)
+        private void ButtonLineExtensionLoad_Click(object sender, EventArgs e)
         {
-            ActionLoadExcludeLineExtensions?.Invoke();
+            ActionLoadLineExtensions?.Invoke();
         }
 
-        private void ButtonExcludeLineSave_Click(object sender, EventArgs e)
+        private void ButtonLineExtensionSave_Click(object sender, EventArgs e)
         {
-            ActionSaveExcludeLineExtensions?.Invoke();
+            ActionSaveLineExtensions?.Invoke();
         }
     }
 }

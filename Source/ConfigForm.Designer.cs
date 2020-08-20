@@ -33,6 +33,9 @@
             this.buttonSourceExtensionsSave = new System.Windows.Forms.Button();
             this.buttonSourceExtensionsLoad = new System.Windows.Forms.Button();
             this.textBoxExcludeDirectories = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonLineExtensionSave = new System.Windows.Forms.Button();
+            this.buttonLineExtensionLoad = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonExcludeDirectoriesSave = new System.Windows.Forms.Button();
             this.buttonExcludeDirectoriesLoad = new System.Windows.Forms.Button();
@@ -44,9 +47,6 @@
             this.ColumnExtension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnExtensionDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelExtension = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonExtensionSave = new System.Windows.Forms.Button();
-            this.buttonExtensionLoad = new System.Windows.Forms.Button();
             this.labelExcludePath = new System.Windows.Forms.Label();
             this.textBoxExcludeExtensions = new System.Windows.Forms.TextBox();
             this.labelSource = new System.Windows.Forms.Label();
@@ -56,19 +56,19 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.buttonProjectExtensionSave = new System.Windows.Forms.Button();
             this.buttonProjectExtensionLoad = new System.Windows.Forms.Button();
-            this.labelExcludeLine = new System.Windows.Forms.Label();
-            this.textBoxExcludeLine = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.buttonExcludeLineSave = new System.Windows.Forms.Button();
-            this.buttonExcludeLineLoad = new System.Windows.Forms.Button();
+            this.labelLineExtension = new System.Windows.Forms.Label();
+            this.textBoxLineExtension = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonExtensionSave = new System.Windows.Forms.Button();
+            this.buttonExtensionLoad = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtension)).BeginInit();
-            this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,8 +95,8 @@
             this.tableLayoutPanel1.Controls.Add(this.labelProject, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxProjectExtensions, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelExcludeLine, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxExcludeLine, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelLineExtension, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxLineExtension, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -145,6 +145,35 @@
             this.textBoxExcludeDirectories.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxExcludeDirectories.Size = new System.Drawing.Size(174, 335);
             this.textBoxExcludeDirectories.TabIndex = 10;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.buttonLineExtensionSave);
+            this.panel6.Controls.Add(this.buttonLineExtensionLoad);
+            this.panel6.Location = new System.Drawing.Point(991, 384);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(174, 34);
+            this.panel6.TabIndex = 19;
+            // 
+            // buttonLineExtensionSave
+            // 
+            this.buttonLineExtensionSave.Location = new System.Drawing.Point(89, 6);
+            this.buttonLineExtensionSave.Name = "buttonLineExtensionSave";
+            this.buttonLineExtensionSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonLineExtensionSave.TabIndex = 1;
+            this.buttonLineExtensionSave.Text = "저장";
+            this.buttonLineExtensionSave.UseVisualStyleBackColor = true;
+            this.buttonLineExtensionSave.Click += new System.EventHandler(this.ButtonLineExtensionSave_Click);
+            // 
+            // buttonLineExtensionLoad
+            // 
+            this.buttonLineExtensionLoad.Location = new System.Drawing.Point(8, 6);
+            this.buttonLineExtensionLoad.Name = "buttonLineExtensionLoad";
+            this.buttonLineExtensionLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLineExtensionLoad.TabIndex = 0;
+            this.buttonLineExtensionLoad.Text = "읽기";
+            this.buttonLineExtensionLoad.UseVisualStyleBackColor = true;
+            this.buttonLineExtensionLoad.Click += new System.EventHandler(this.ButtonLineExtensionLoad_Click);
             // 
             // panel3
             // 
@@ -248,35 +277,6 @@
             this.labelExtension.Text = "확장자구분";
             this.labelExtension.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.buttonExtensionSave);
-            this.panel1.Controls.Add(this.buttonExtensionLoad);
-            this.panel1.Location = new System.Drawing.Point(3, 384);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 34);
-            this.panel1.TabIndex = 2;
-            // 
-            // buttonExtensionSave
-            // 
-            this.buttonExtensionSave.Location = new System.Drawing.Point(89, 6);
-            this.buttonExtensionSave.Name = "buttonExtensionSave";
-            this.buttonExtensionSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonExtensionSave.TabIndex = 1;
-            this.buttonExtensionSave.Text = "저장";
-            this.buttonExtensionSave.UseVisualStyleBackColor = true;
-            this.buttonExtensionSave.Click += new System.EventHandler(this.ButtonExtensionSave_Click);
-            // 
-            // buttonExtensionLoad
-            // 
-            this.buttonExtensionLoad.Location = new System.Drawing.Point(8, 6);
-            this.buttonExtensionLoad.Name = "buttonExtensionLoad";
-            this.buttonExtensionLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonExtensionLoad.TabIndex = 0;
-            this.buttonExtensionLoad.Text = "읽기";
-            this.buttonExtensionLoad.UseVisualStyleBackColor = true;
-            this.buttonExtensionLoad.Click += new System.EventHandler(this.ButtonExtensionLoad_Click);
-            // 
             // labelExcludePath
             // 
             this.labelExcludePath.Location = new System.Drawing.Point(451, 0);
@@ -360,52 +360,52 @@
             this.buttonProjectExtensionLoad.UseVisualStyleBackColor = true;
             this.buttonProjectExtensionLoad.Click += new System.EventHandler(this.ButtonProjectExtensionLoad_Click);
             // 
-            // labelExcludeLine
+            // labelLineExtension
             // 
-            this.labelExcludeLine.Location = new System.Drawing.Point(991, 0);
-            this.labelExcludeLine.Name = "labelExcludeLine";
-            this.labelExcludeLine.Size = new System.Drawing.Size(174, 40);
-            this.labelExcludeLine.TabIndex = 17;
-            this.labelExcludeLine.Text = "라인수제외확장자";
-            this.labelExcludeLine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLineExtension.Location = new System.Drawing.Point(991, 0);
+            this.labelLineExtension.Name = "labelLineExtension";
+            this.labelLineExtension.Size = new System.Drawing.Size(174, 40);
+            this.labelLineExtension.TabIndex = 17;
+            this.labelLineExtension.Text = "라인수확인확장자";
+            this.labelLineExtension.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBoxExcludeLine
+            // textBoxLineExtension
             // 
-            this.textBoxExcludeLine.Location = new System.Drawing.Point(991, 43);
-            this.textBoxExcludeLine.Multiline = true;
-            this.textBoxExcludeLine.Name = "textBoxExcludeLine";
-            this.textBoxExcludeLine.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxExcludeLine.Size = new System.Drawing.Size(174, 335);
-            this.textBoxExcludeLine.TabIndex = 18;
+            this.textBoxLineExtension.Location = new System.Drawing.Point(991, 43);
+            this.textBoxLineExtension.Multiline = true;
+            this.textBoxLineExtension.Name = "textBoxLineExtension";
+            this.textBoxLineExtension.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxLineExtension.Size = new System.Drawing.Size(174, 335);
+            this.textBoxLineExtension.TabIndex = 18;
             // 
-            // panel6
+            // panel1
             // 
-            this.panel6.Controls.Add(this.buttonExcludeLineSave);
-            this.panel6.Controls.Add(this.buttonExcludeLineLoad);
-            this.panel6.Location = new System.Drawing.Point(991, 384);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(174, 34);
-            this.panel6.TabIndex = 19;
+            this.panel1.Controls.Add(this.buttonExtensionSave);
+            this.panel1.Controls.Add(this.buttonExtensionLoad);
+            this.panel1.Location = new System.Drawing.Point(3, 384);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(258, 34);
+            this.panel1.TabIndex = 2;
             // 
-            // buttonExcludeLineSave
+            // buttonExtensionSave
             // 
-            this.buttonExcludeLineSave.Location = new System.Drawing.Point(89, 6);
-            this.buttonExcludeLineSave.Name = "buttonExcludeLineSave";
-            this.buttonExcludeLineSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonExcludeLineSave.TabIndex = 1;
-            this.buttonExcludeLineSave.Text = "저장";
-            this.buttonExcludeLineSave.UseVisualStyleBackColor = true;
-            this.buttonExcludeLineSave.Click += new System.EventHandler(this.ButtonExcludeLineSave_Click);
+            this.buttonExtensionSave.Location = new System.Drawing.Point(89, 6);
+            this.buttonExtensionSave.Name = "buttonExtensionSave";
+            this.buttonExtensionSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonExtensionSave.TabIndex = 1;
+            this.buttonExtensionSave.Text = "저장";
+            this.buttonExtensionSave.UseVisualStyleBackColor = true;
+            this.buttonExtensionSave.Click += new System.EventHandler(this.ButtonExtensionSave_Click);
             // 
-            // buttonExcludeLineLoad
+            // buttonExtensionLoad
             // 
-            this.buttonExcludeLineLoad.Location = new System.Drawing.Point(8, 6);
-            this.buttonExcludeLineLoad.Name = "buttonExcludeLineLoad";
-            this.buttonExcludeLineLoad.Size = new System.Drawing.Size(75, 23);
-            this.buttonExcludeLineLoad.TabIndex = 0;
-            this.buttonExcludeLineLoad.Text = "읽기";
-            this.buttonExcludeLineLoad.UseVisualStyleBackColor = true;
-            this.buttonExcludeLineLoad.Click += new System.EventHandler(this.ButtonExcludeLineLoad_Click);
+            this.buttonExtensionLoad.Location = new System.Drawing.Point(8, 6);
+            this.buttonExtensionLoad.Name = "buttonExtensionLoad";
+            this.buttonExtensionLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonExtensionLoad.TabIndex = 0;
+            this.buttonExtensionLoad.Text = "읽기";
+            this.buttonExtensionLoad.UseVisualStyleBackColor = true;
+            this.buttonExtensionLoad.Click += new System.EventHandler(this.ButtonExtensionLoad_Click);
             // 
             // ConfigForm
             // 
@@ -419,12 +419,12 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExtension)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -460,9 +460,9 @@
         private System.Windows.Forms.Label labelProject;
         private System.Windows.Forms.TextBox textBoxProjectExtensions;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button buttonExcludeLineSave;
-        private System.Windows.Forms.Button buttonExcludeLineLoad;
-        private System.Windows.Forms.Label labelExcludeLine;
-        private System.Windows.Forms.TextBox textBoxExcludeLine;
+        private System.Windows.Forms.Button buttonLineExtensionSave;
+        private System.Windows.Forms.Button buttonLineExtensionLoad;
+        private System.Windows.Forms.Label labelLineExtension;
+        private System.Windows.Forms.TextBox textBoxLineExtension;
     }
 }

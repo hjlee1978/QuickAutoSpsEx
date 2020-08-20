@@ -13,4 +13,3 @@ Release\
 \Tools
 \UnitTest
 \Batchfile
-\library
