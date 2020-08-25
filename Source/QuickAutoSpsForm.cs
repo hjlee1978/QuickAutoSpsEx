@@ -806,7 +806,7 @@ namespace FileInfoExtractor
             }
 
 
-            if (string.IsNullOrEmpty(Properties.LastInfo.Default.strDstPath) == false)
+            if (string.IsNullOrEmpty(Properties.LastInfo.Default.strDstPath))
             {
                 tbResultPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
