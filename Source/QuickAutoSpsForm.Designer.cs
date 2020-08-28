@@ -33,6 +33,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuickAutoSpsForm));
             this.startExtract = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
             this.tbPathDel = new System.Windows.Forms.TextBox();
             this.tbPathHead = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelPathHead = new System.Windows.Forms.Label();
             this.tbVersion = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbLibNumberBase = new System.Windows.Forms.TextBox();
@@ -82,6 +83,7 @@
             this.pbProgress = new System.Windows.Forms.PictureBox();
             this.axHwpCtrl = new AxHWPCONTROLLib.AxHwpCtrl();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panelTopic.SuspendLayout();
             this.panelMiddle.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -245,7 +247,7 @@
             this.groupBox3.Controls.Add(this.tbPathDel);
             this.groupBox3.Controls.Add(this.tbPathHead);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.labelPathHead);
             this.groupBox3.Controls.Add(this.tbVersion);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.tbLibNumberBase);
@@ -346,14 +348,14 @@
             this.label8.TabIndex = 9;
             this.label8.Text = "파일경로 삭제문자열";
             // 
-            // label7
+            // labelPathHead
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(45, 152);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 12);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "파일경로 접두어";
+            this.labelPathHead.AutoSize = true;
+            this.labelPathHead.Location = new System.Drawing.Point(45, 152);
+            this.labelPathHead.Name = "labelPathHead";
+            this.labelPathHead.Size = new System.Drawing.Size(93, 12);
+            this.labelPathHead.TabIndex = 8;
+            this.labelPathHead.Text = "파일경로 접두어";
             // 
             // tbVersion
             // 
@@ -690,7 +692,7 @@
         private System.Windows.Forms.TextBox tbPathDel;
         private System.Windows.Forms.TextBox tbPathHead;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelPathHead;
         private System.Windows.Forms.TextBox tbVersion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbLibNumberBase;
@@ -715,6 +717,7 @@
         private System.Windows.Forms.TextBox tbExtractPath;
         private System.Windows.Forms.PictureBox pbProgress;
         private System.Windows.Forms.RadioButton rbSrcTypeProject;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

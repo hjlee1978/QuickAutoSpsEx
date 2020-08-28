@@ -15,7 +15,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="strExeNumberBase" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C</Value>
+      <Value Profile="(Default)">E</Value>
     </Setting>
     <Setting Name="strLibNumberBase" Type="System.String" Scope="User">
       <Value Profile="(Default)">L</Value>

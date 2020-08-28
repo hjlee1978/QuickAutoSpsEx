@@ -65,6 +65,16 @@ namespace FileInfoExtractor
         const string excludeDirectoriesFilePath = ".\\Data\\excludeDirectories.txt";
 
         /// <summary>
+        /// 실행파일 확장자 설정 파일
+        /// </summary>
+        const string executeFileExtesionPath = @".\Data\executeFileExtension.txt";
+
+        /// <summary>
+        /// 라이브러리 확장자 설정 파일
+        /// </summary>
+        const string libraryFileExtesionPath = @".\Data\libraryFileExtension.txt";
+
+        /// <summary>
         /// 확장자 설정 목록
         /// </summary>
         Dictionary<string, string> extensionMapToClass = new Dictionary<string, string>();
@@ -97,6 +107,16 @@ namespace FileInfoExtractor
         /// 제외 디렉토리 목록
         /// </summary>
         List<string> ExcludeDirectories = new List<string>();
+
+        /// <summary>
+        /// 실행파일 확장자 목록
+        /// </summary>
+        List<string> ExecuteExtensions = new List<string>();
+
+        /// <summary>
+        /// 라이브러리 파일 확장자 목록
+        /// </summary>
+        List<string> LibraryExtensions = new List<string>();
 
         private readonly Crc32 _crc32 = new Crc32();
 
@@ -349,11 +369,11 @@ namespace FileInfoExtractor
                         oSheet.Cells[row, 7].Value = checkSumCode;
                         oSheet.Cells[row, 8] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year, info.LastWriteTime.Month, info.LastWriteTime.Day);
 
-                        if (fileInfo.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                        if (IsContains(ExecuteExtensions, fileInfo.Extension))
                         {
                             oSheet.Cells[row, 9] = string.Format("{0:D}{1:D3}", tbExeNumberbase.Text, exeNumberIndex++);
                         }
-                        else if (fileInfo.Extension.Equals(".dll", StringComparison.OrdinalIgnoreCase))
+                        if (IsContains(LibraryExtensions, fileInfo.Extension))
                         {
                             oSheet.Cells[row, 9] = string.Format("{0:D}{1:D3}", tbLibNumberBase.Text, libNumberIndex++);
                         }
@@ -488,6 +508,18 @@ namespace FileInfoExtractor
             return path;
         }
 
+        private static bool IsContains(List<string> list, string data)
+        {
+            bool result = false;
+
+            if(list != null)
+            {
+                result = list.Contains(data, StringComparer.OrdinalIgnoreCase);
+            }
+
+            return result;
+        }
+
         private void ExtractHwp(IEnumerable<FileSystemInfo> infos)
         {
             try
@@ -597,11 +629,11 @@ namespace FileInfoExtractor
                         hwpInsertText[5] = checkSumCode;
                         hwpInsertText[6] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year, info.LastWriteTime.Month, info.LastWriteTime.Day);
 
-                        if (fileInfo.Extension.Equals(".exe", StringComparison.OrdinalIgnoreCase))
+                        if(IsContains(ExecuteExtensions, fileInfo.Extension))
                         {
                             hwpInsertText[7] = string.Format("{0:D}{1:D3}", tbExeNumberbase.Text, exeNumberIndex++);
                         }
-                        else if (fileInfo.Extension.Equals(".dll", StringComparison.OrdinalIgnoreCase))
+                        else if (IsContains(LibraryExtensions, fileInfo.Extension))
                         {
                             hwpInsertText[7] = string.Format("{0:D}{1:D3}", tbLibNumberBase.Text, libNumberIndex++);
                         }
@@ -1096,6 +1128,8 @@ namespace FileInfoExtractor
 
         private void QuickAutoSpsForm_Load(object sender, EventArgs e)
         {
+            ToolTipUtils.LoadToolTips(this.toolTip, this.Controls, Properties.ToolTips.Default);
+
             extensionMapToClass = LoadFileClassRule(classByExtensionPath);
             subStringMapToClass = LoadFileClassRule(classBySubStringPath);
             ExcludeExtensions = LoadFileExtensions(excludeExtensionFilePath);
@@ -1103,6 +1137,8 @@ namespace FileInfoExtractor
             SourceExtensions = LoadFileExtensions(sourceExtensionFilePath);
             ProjectExtensions = LoadFileExtensions(projectExtensionFilePath);
             LineExtensions = LoadFileExtensions(lineExtensionFilePath);
+            ExecuteExtensions = LoadFileExtensions(executeFileExtesionPath);
+            LibraryExtensions = LoadFileExtensions(libraryFileExtesionPath);
         }
 
         private string GetFileClassName(FileInfo fileInfo)
@@ -1187,17 +1223,20 @@ namespace FileInfoExtractor
             try
             {
                 List<string> fileExtensions = new List<string>();
-                using (StreamReader sr = new StreamReader(filePath))
+                if (File.Exists(filePath))
                 {
-                    while (sr.ReadLine() is string line)
+                    using (StreamReader sr = new StreamReader(filePath))
                     {
-                        if(string.IsNullOrEmpty(line) == false)
+                        while (sr.ReadLine() is string line)
                         {
-                            line = line.Trim();
-                            if((line.Trim().StartsWith(";") == false) && (line.Trim().StartsWith(".")))
-                            fileExtensions.Add(line);
+                            if (string.IsNullOrEmpty(line) == false)
+                            {
+                                line = line.Trim();
+                                if ((line.Trim().StartsWith(";") == false) && (line.Trim().StartsWith(".")))
+                                    fileExtensions.Add(line);
+                            }
                         }
-                    } 
+                    }
                 }
 
                 return fileExtensions;

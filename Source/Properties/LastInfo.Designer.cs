@@ -73,7 +73,7 @@ namespace FileInfoExtractor.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C")]
+        [global::System.Configuration.DefaultSettingValueAttribute("E")]
         public string strExeNumberBase {
             get {
                 return ((string)(this["strExeNumberBase"]));

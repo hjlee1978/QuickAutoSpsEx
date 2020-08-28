@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FileInfoExtractor.Properties" GeneratedClassName="ToolTips">
+  <Profiles />
+  <Settings>
+    <Setting Name="tbPathHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">국방규격 전산파일명 표기 원칙. SW–[도면번호]-EXE-R[개정차수]</Value>
+    </Setting>
+    <Setting Name="labelPathHead" Type="System.String" Scope="User">
+      <Value Profile="(Default)">국방규격 전산파일명 표기 원칙. SW–[도면번호]-EXE-R[개정차수]</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
