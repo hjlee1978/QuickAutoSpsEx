@@ -496,11 +496,7 @@ namespace FileInfoExtractor
                 path = string.Format(tbPathHead.Text + directoryName);
             }
 
-            if (cbUseLower.Checked)
-            {
-                path = path.ToLower();
-            }
-            else
+            if (cbUseUpper.Checked)
             {
                 path = path.ToUpper();
             }

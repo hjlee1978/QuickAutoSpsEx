@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+#pragma warning disable CA1304 // CultureInfo를 지정하세요.
+#pragma warning disable CA1031 // 일반적인 예외 형식을 catch하지 마세요.
+
 namespace FileInfoExtractor
 {
     static public class ToolTipUtils
@@ -374,3 +377,6 @@ namespace FileInfoExtractor
         }
     }
 }
+
+#pragma warning restore CA1304 // CultureInfo를 지정하세요.
+#pragma warning restore CA1031 // 일반적인 예외 형식을 catch하지 마세요.

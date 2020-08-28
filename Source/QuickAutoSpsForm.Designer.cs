@@ -52,7 +52,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.cbTableHeaderSet = new System.Windows.Forms.CheckBox();
             this.lbDelText = new System.Windows.Forms.Label();
-            this.cbUseLower = new System.Windows.Forms.CheckBox();
+            this.cbUseUpper = new System.Windows.Forms.CheckBox();
             this.tbPathDel = new System.Windows.Forms.TextBox();
             this.tbPathHead = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -243,7 +243,7 @@
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.cbTableHeaderSet);
             this.groupBox3.Controls.Add(this.lbDelText);
-            this.groupBox3.Controls.Add(this.cbUseLower);
+            this.groupBox3.Controls.Add(this.cbUseUpper);
             this.groupBox3.Controls.Add(this.tbPathDel);
             this.groupBox3.Controls.Add(this.tbPathHead);
             this.groupBox3.Controls.Add(this.label8);
@@ -312,16 +312,16 @@
             this.lbDelText.Text = "삭제할 문자열이 잘못 됨.";
             this.lbDelText.Visible = false;
             // 
-            // cbUseLower
+            // cbUseUpper
             // 
-            this.cbUseLower.AutoSize = true;
-            this.cbUseLower.Location = new System.Drawing.Point(21, 127);
-            this.cbUseLower.Margin = new System.Windows.Forms.Padding(1);
-            this.cbUseLower.Name = "cbUseLower";
-            this.cbUseLower.Size = new System.Drawing.Size(116, 16);
-            this.cbUseLower.TabIndex = 12;
-            this.cbUseLower.Text = "경로 소문자 사용";
-            this.cbUseLower.UseVisualStyleBackColor = true;
+            this.cbUseUpper.AutoSize = true;
+            this.cbUseUpper.Location = new System.Drawing.Point(21, 127);
+            this.cbUseUpper.Margin = new System.Windows.Forms.Padding(1);
+            this.cbUseUpper.Name = "cbUseUpper";
+            this.cbUseUpper.Size = new System.Drawing.Size(100, 16);
+            this.cbUseUpper.TabIndex = 12;
+            this.cbUseUpper.Text = "대문자로 변경";
+            this.cbUseUpper.UseVisualStyleBackColor = true;
             // 
             // tbPathDel
             // 
@@ -337,7 +337,7 @@
             this.tbPathHead.Name = "tbPathHead";
             this.tbPathHead.Size = new System.Drawing.Size(387, 21);
             this.tbPathHead.TabIndex = 10;
-            this.tbPathHead.Text = "저장위치 : \\tffs0";
+            this.tbPathHead.Text = "저장위치 : \\SW-00000000-EXE-R0";
             // 
             // label8
             // 
@@ -688,7 +688,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.CheckBox cbTableHeaderSet;
         private System.Windows.Forms.Label lbDelText;
-        private System.Windows.Forms.CheckBox cbUseLower;
+        private System.Windows.Forms.CheckBox cbUseUpper;
         private System.Windows.Forms.TextBox tbPathDel;
         private System.Windows.Forms.TextBox tbPathHead;
         private System.Windows.Forms.Label label8;

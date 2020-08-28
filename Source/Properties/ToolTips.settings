@@ -8,5 +8,8 @@
     <Setting Name="labelPathHead" Type="System.String" Scope="User">
       <Value Profile="(Default)">국방규격 전산파일명 표기 원칙. SW–[도면번호]-EXE-R[개정차수]</Value>
     </Setting>
+    <Setting Name="cbUseUpper" Type="System.String" Scope="User">
+      <Value Profile="(Default)">파일경로를 모두 대문자로 강제 변경</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

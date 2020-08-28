@@ -46,5 +46,17 @@ namespace FileInfoExtractor.Properties {
                 this["labelPathHead"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("파일경로를 모두 대문자로 강제 변경")]
+        public string cbUseUpper {
+            get {
+                return ((string)(this["cbUseUpper"]));
+            }
+            set {
+                this["cbUseUpper"] = value;
+            }
+        }
     }
 }
