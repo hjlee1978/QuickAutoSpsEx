@@ -120,9 +120,34 @@ namespace FileInfoExtractor
 
         private readonly Crc32 _crc32 = new Crc32();
 
-        private readonly String exeFilePath = "sps_auto_temp1231231231.hwp";
-        private readonly String scrFilePath = "sps_auto_temp1231231232.hwp";
-        private readonly String projectFilePath = "sps_auto_temp1231231233.hwp";
+        /// <summary>
+        /// 실행파일 목록 임시 문서
+        /// </summary>
+        private readonly String exeFilePath = "sps_auto_exe";
+        /// <summary>
+        /// 소스파일 목록 임시 문서
+        /// </summary>
+        private readonly String scrFilePath = "sps_auto_src";
+        /// <summary>
+        /// 프로젝트 파일 목록 임시 문서
+        /// </summary>
+        private readonly String projectFilePath = "sps_auto_project";
+        /// <summary>
+        /// 기타 파일 목록 임시 문서
+        /// </summary>
+        private readonly String etcFilePath = "sps_auto_etc";
+
+        /// <summary>
+        /// 임시 파일 생성
+        /// </summary>
+        /// <param name="tag">파일 시작 태그</param>
+        /// <param name="extension">파일 확장자</param>
+        /// <param name="datetime">임시 파일 타임스탬프</param>
+        /// <returns>임시 파일 명</returns>
+        private static string TempFilename(string tag, string extension, DateTime datetime)
+        {
+            return $"{tag}_{datetime.ToString("yyyyMMddHHmmss")}.{extension}";
+        }
 
         private readonly CultureInfo defaultCultureInfo = new CultureInfo("en-us");
 
@@ -252,7 +277,7 @@ namespace FileInfoExtractor
                 oSheet = (Excel._Worksheet)oWB.ActiveSheet;
 
                 //Add table headers going cell by cell.
-                if (rbSrcTypeExe.Checked == true)
+                if (rbSrcTypeExe.Checked)
                 {
                     oSheet.Cells[row, 1] = "저장위치";
                     oSheet.Cells[row, 2] = "구 분";
@@ -267,8 +292,20 @@ namespace FileInfoExtractor
 
                     //oSheet.Cells[0, 7].EntireColumn.NumberFormat = "@";
                 }
+                else if (rbSrcTypeEtc.Checked)
+                {
+                    oSheet.Cells[row, 1] = "저장위치";
+                    oSheet.Cells[row, 2] = "순번";
+                    oSheet.Cells[row, 3] = "파일명";
+                    oSheet.Cells[row, 4] = "버전";
+                    oSheet.Cells[row, 5] = "크기\n(Byte)";
+                    oSheet.Cells[row, 6] = "첵섬";
+                    oSheet.Cells[row, 7] = "생성일자";
+                    oSheet.Cells[row, 8] = "기능 설명";
+                }
                 else
                 {
+                    //source, project, execute
                     oSheet.Cells[row, 1] = "저장위치";
                     oSheet.Cells[row, 2] = "순번";
                     oSheet.Cells[row, 3] = "파일명";
@@ -367,7 +404,7 @@ namespace FileInfoExtractor
                         oSheet.Cells[row, 6] = string.Format("{0:n0}", fileInfo.Length);
                         oSheet.Cells[row, 7].NumberFormat = "@";
                         oSheet.Cells[row, 7].Value = checkSumCode;
-                        oSheet.Cells[row, 8] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year, info.LastWriteTime.Month, info.LastWriteTime.Day);
+                        oSheet.Cells[row, 8] = info.LastWriteTime.ToString("yyyy.MM.dd");
 
                         if (IsContains(ExecuteExtensions, fileInfo.Extension))
                         {
@@ -384,8 +421,9 @@ namespace FileInfoExtractor
 
                         oSheet.Cells[row, 10] = "-";
                     }
-                    else
+                    else if(rbSrcTypeEtc.Checked)
                     {
+                        //etc
                         oSheet.Cells[row, 1] = path;
                         oSheet.Cells[row, 2] = i;
                         oSheet.Cells[row, 3] = info.Name;
@@ -393,7 +431,20 @@ namespace FileInfoExtractor
                         oSheet.Cells[row, 5] = string.Format("{0:n0}", fileInfo.Length);
                         oSheet.Cells[row, 6].NumberFormat = "@";
                         oSheet.Cells[row, 6].Value = checkSumCode;
-                        oSheet.Cells[row, 7] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year.ToString().Substring(2), info.LastWriteTime.Month, info.LastWriteTime.Day);
+                        oSheet.Cells[row, 7] = info.LastWriteTime.ToString("yyyy.MM.dd");
+                        oSheet.Cells[row, 8] = "-";
+                    }
+                    else
+                    {
+                        //source, project, execute
+                        oSheet.Cells[row, 1] = path;
+                        oSheet.Cells[row, 2] = i;
+                        oSheet.Cells[row, 3] = info.Name;
+                        oSheet.Cells[row, 4] = string.Format("'" + tbVersion.Text);
+                        oSheet.Cells[row, 5] = string.Format("{0:n0}", fileInfo.Length);
+                        oSheet.Cells[row, 6].NumberFormat = "@";
+                        oSheet.Cells[row, 6].Value = checkSumCode;
+                        oSheet.Cells[row, 7] = info.LastWriteTime.ToString("yyyy.MM.dd");
                         oSheet.Cells[row, 8] = (lines == null ? "-" : string.Format("{0}", lines.Length + 1));
                         oSheet.Cells[row, 9] = "-";
                     }
@@ -520,9 +571,7 @@ namespace FileInfoExtractor
         {
             try
             {
-                String[] hwpInsertText = new String[9];
-
-                String[] hwpInsertTextCode = new String[8];
+                DateTime timestamp = DateTime.Now;
 
                 string checkSumCode = "";
                 StringBuilder itemContents = new StringBuilder();
@@ -546,19 +595,29 @@ namespace FileInfoExtractor
                     System.IO.File.Delete(resultPath);
                 }
 
-                ResourceCopy();// c# 리소스에서 한글 템플릿 파일 복사,  temp1,hwp,  temp2.hwp
-                
-                if (rbSrcTypeExe.Checked == true)
+                if (rbSrcTypeExe.Checked)
                 {
-                    axHwpCtrl.Open(exeFilePath);
+                    string filename = TempFilename(exeFilePath, "hwp", timestamp);
+                    ResourceCopy(Properties.Resources.execute, filename);
+                    axHwpCtrl.Open(filename);
                 }
-                else if(rbSrcTypeSrc.Checked == true)
+                else if(rbSrcTypeSrc.Checked)
                 {
-                    axHwpCtrl.Open(scrFilePath);
+                    string filename = TempFilename(scrFilePath, "hwp", timestamp);
+                    ResourceCopy(Properties.Resources.source, filename);
+                    axHwpCtrl.Open(filename);
+                }
+                else if(rbSrcTypeProject.Checked)
+                {
+                    string filename = TempFilename(projectFilePath, "hwp", timestamp);
+                    ResourceCopy(Properties.Resources.projet, filename);
+                    axHwpCtrl.Open(filename);
                 }
                 else
                 {
-                    axHwpCtrl.Open(projectFilePath);
+                    string filename = TempFilename(etcFilePath, "hwp", timestamp);
+                    ResourceCopy(Properties.Resources.etc, filename);
+                    axHwpCtrl.Open(filename);
                 }
 
                 axHwpCtrl.MoveToField("table1_field1");
@@ -615,45 +674,61 @@ namespace FileInfoExtractor
                     }
 
                     // 조립
-                    if (rbSrcTypeExe.Checked == true)
+                    if (rbSrcTypeExe.Checked)
                     {
-                        hwpInsertText[0] = GetFileClassName(fileInfo);
-                        hwpInsertText[1] = i.ToString();
-                        hwpInsertText[2] = info.Name;
-                        hwpInsertText[3] = tbVersion.Text;
-                        hwpInsertText[4] = string.Format("{0:n0}", fileInfo.Length);
-                        hwpInsertText[5] = checkSumCode;
-                        hwpInsertText[6] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year, info.LastWriteTime.Month, info.LastWriteTime.Day);
+                        String[] hwpData = new String[9];
+                        hwpData[0] = GetFileClassName(fileInfo);
+                        hwpData[1] = i.ToString();
+                        hwpData[2] = info.Name;
+                        hwpData[3] = tbVersion.Text;
+                        hwpData[4] = string.Format("{0:n0}", fileInfo.Length);
+                        hwpData[5] = checkSumCode;
+                        hwpData[6] = info.LastWriteTime.ToString("yyyy.MM.dd");
 
-                        if(IsContains(ExecuteExtensions, fileInfo.Extension))
+                        if (IsContains(ExecuteExtensions, fileInfo.Extension))
                         {
-                            hwpInsertText[7] = string.Format("{0:D}{1:D3}", tbExeNumberbase.Text, exeNumberIndex++);
+                            hwpData[7] = string.Format("{0:D}{1:D3}", tbExeNumberbase.Text, exeNumberIndex++);
                         }
                         else if (IsContains(LibraryExtensions, fileInfo.Extension))
                         {
-                            hwpInsertText[7] = string.Format("{0:D}{1:D3}", tbLibNumberBase.Text, libNumberIndex++);
+                            hwpData[7] = string.Format("{0:D}{1:D3}", tbLibNumberBase.Text, libNumberIndex++);
                         }
                         else
                         {
-                            hwpInsertText[7] = string.Format("{0:D}{1:D3}", tbEtcNumberBase.Text, dataNumberIndex++);
+                            hwpData[7] = string.Format("{0:D}{1:D3}", tbEtcNumberBase.Text, dataNumberIndex++);
                         }
-                        hwpInsertText[8] = "-";
-           
+                        hwpData[8] = "-";
 
-                        Hpw_insertData(hwpInsertText);
+                        Hpw_insertData(hwpData);
+                    }
+                    else if (rbSrcTypeEtc.Checked)
+                    {
+                        //etc
+                        String[] hwpData = new String[7];
+                        hwpData[0] = i.ToString();
+                        hwpData[1] = info.Name;
+                        hwpData[2] = tbVersion.Text;
+                        hwpData[3] = string.Format("{0:n0}", fileInfo.Length);
+                        hwpData[4] = checkSumCode;
+                        hwpData[5] = info.LastWriteTime.ToString("yyyy.MM.dd");
+                        hwpData[6] = "-";
+
+                        Hpw_insertData(hwpData);
                     }
                     else
                     {
-                        hwpInsertTextCode[0] = i.ToString();
-                        hwpInsertTextCode[1] = info.Name;
-                        hwpInsertTextCode[2] = tbVersion.Text;
-                        hwpInsertTextCode[3] = string.Format("{0:n0}", fileInfo.Length);
-                        hwpInsertTextCode[4] = checkSumCode;
-                        hwpInsertTextCode[5] = string.Format("{0:0000}.{1:00}.{2:00}", info.LastWriteTime.Year.ToString().Substring(2), info.LastWriteTime.Month, info.LastWriteTime.Day);
-                        hwpInsertTextCode[6] = (lines == null ? "-" : string.Format("{0}", lines.Length + 1));
-                        hwpInsertTextCode[7] = "-";
+                        //src, execute, project
+                        String[] hwpData = new String[8];
+                        hwpData[0] = i.ToString();
+                        hwpData[1] = info.Name;
+                        hwpData[2] = tbVersion.Text;
+                        hwpData[3] = string.Format("{0:n0}", fileInfo.Length);
+                        hwpData[4] = checkSumCode;
+                        hwpData[5] = info.LastWriteTime.ToString("yyyy.MM.dd");
+                        hwpData[6] = (lines == null ? "-" : string.Format("{0}", lines.Length + 1));
+                        hwpData[7] = "-";
 
-                        Hpw_insertData(hwpInsertTextCode);
+                        Hpw_insertData(hwpData);
                     }
 
                     checkSumCode = "";
@@ -679,11 +754,6 @@ namespace FileInfoExtractor
 
                 //한글 파일 닫기
                 axHwpCtrl.Clear();
-
-                //임시파일 삭제
-                FileDelete(exeFilePath);
-                FileDelete(scrFilePath);
-                FileDelete(projectFilePath);
 
                 pbProgress.Visible = false;
                 lbFile.Visible = false;
@@ -1108,18 +1178,6 @@ namespace FileInfoExtractor
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-        }
-
-        private  void ResourceCopy()
-        {
-            //실행 파일 목록 템플릿 복사
-            ResourceCopy(Properties.Resources.execute, exeFilePath);
-
-            //소스코드 파일 목록 템플릿 복사
-            ResourceCopy(Properties.Resources.source, scrFilePath);
-
-            //프로젝트 파일 목록 템플릿 복사
-            ResourceCopy(Properties.Resources.projet, projectFilePath);
         }
 
         private void QuickAutoSpsForm_Load(object sender, EventArgs e)

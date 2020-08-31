@@ -204,6 +204,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="etc.hwp" />
     <None Include="execute.hwp" />
     <None Include="packages.config" />
     <None Include="projet.hwp" />

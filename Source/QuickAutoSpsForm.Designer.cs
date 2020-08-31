@@ -84,6 +84,7 @@
             this.axHwpCtrl = new AxHWPCONTROLLib.AxHwpCtrl();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.rbSrcTypeEtc = new System.Windows.Forms.RadioButton();
             this.panelTopic.SuspendLayout();
             this.panelMiddle.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -264,7 +265,7 @@
             // 
             // buttonConfig
             // 
-            this.buttonConfig.Location = new System.Drawing.Point(10, 70);
+            this.buttonConfig.Location = new System.Drawing.Point(10, 87);
             this.buttonConfig.Name = "buttonConfig";
             this.buttonConfig.Size = new System.Drawing.Size(75, 23);
             this.buttonConfig.TabIndex = 10;
@@ -292,7 +293,7 @@
             // cbTableHeaderSet
             // 
             this.cbTableHeaderSet.AutoSize = true;
-            this.cbTableHeaderSet.Location = new System.Drawing.Point(22, 106);
+            this.cbTableHeaderSet.Location = new System.Drawing.Point(22, 119);
             this.cbTableHeaderSet.Margin = new System.Windows.Forms.Padding(1);
             this.cbTableHeaderSet.Name = "cbTableHeaderSet";
             this.cbTableHeaderSet.Size = new System.Drawing.Size(148, 16);
@@ -304,7 +305,7 @@
             // 
             this.lbDelText.AutoSize = true;
             this.lbDelText.ForeColor = System.Drawing.Color.Red;
-            this.lbDelText.Location = new System.Drawing.Point(155, 204);
+            this.lbDelText.Location = new System.Drawing.Point(155, 217);
             this.lbDelText.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbDelText.Name = "lbDelText";
             this.lbDelText.Size = new System.Drawing.Size(141, 12);
@@ -315,7 +316,7 @@
             // cbUseUpper
             // 
             this.cbUseUpper.AutoSize = true;
-            this.cbUseUpper.Location = new System.Drawing.Point(21, 127);
+            this.cbUseUpper.Location = new System.Drawing.Point(21, 140);
             this.cbUseUpper.Margin = new System.Windows.Forms.Padding(1);
             this.cbUseUpper.Name = "cbUseUpper";
             this.cbUseUpper.Size = new System.Drawing.Size(100, 16);
@@ -325,7 +326,7 @@
             // 
             // tbPathDel
             // 
-            this.tbPathDel.Location = new System.Drawing.Point(153, 173);
+            this.tbPathDel.Location = new System.Drawing.Point(153, 186);
             this.tbPathDel.Name = "tbPathDel";
             this.tbPathDel.Size = new System.Drawing.Size(387, 21);
             this.tbPathDel.TabIndex = 11;
@@ -333,7 +334,7 @@
             // 
             // tbPathHead
             // 
-            this.tbPathHead.Location = new System.Drawing.Point(153, 150);
+            this.tbPathHead.Location = new System.Drawing.Point(153, 163);
             this.tbPathHead.Name = "tbPathHead";
             this.tbPathHead.Size = new System.Drawing.Size(387, 21);
             this.tbPathHead.TabIndex = 10;
@@ -342,7 +343,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 174);
+            this.label8.Location = new System.Drawing.Point(20, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(117, 12);
             this.label8.TabIndex = 9;
@@ -351,7 +352,7 @@
             // labelPathHead
             // 
             this.labelPathHead.AutoSize = true;
-            this.labelPathHead.Location = new System.Drawing.Point(45, 152);
+            this.labelPathHead.Location = new System.Drawing.Point(45, 165);
             this.labelPathHead.Name = "labelPathHead";
             this.labelPathHead.Size = new System.Drawing.Size(93, 12);
             this.labelPathHead.TabIndex = 8;
@@ -411,12 +412,13 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rbSrcTypeEtc);
             this.groupBox4.Controls.Add(this.rbSrcTypeProject);
             this.groupBox4.Controls.Add(this.rbSrcTypeExe);
             this.groupBox4.Controls.Add(this.rbSrcTypeSrc);
             this.groupBox4.Location = new System.Drawing.Point(6, 20);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(285, 45);
+            this.groupBox4.Size = new System.Drawing.Size(285, 61);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "소스 타입";
@@ -424,7 +426,7 @@
             // rbSrcTypeProject
             // 
             this.rbSrcTypeProject.AutoSize = true;
-            this.rbSrcTypeProject.Location = new System.Drawing.Point(168, 20);
+            this.rbSrcTypeProject.Location = new System.Drawing.Point(91, 39);
             this.rbSrcTypeProject.Name = "rbSrcTypeProject";
             this.rbSrcTypeProject.Size = new System.Drawing.Size(71, 16);
             this.rbSrcTypeProject.TabIndex = 2;
@@ -446,7 +448,7 @@
             // rbSrcTypeSrc
             // 
             this.rbSrcTypeSrc.AutoSize = true;
-            this.rbSrcTypeSrc.Location = new System.Drawing.Point(91, 20);
+            this.rbSrcTypeSrc.Location = new System.Drawing.Point(14, 39);
             this.rbSrcTypeSrc.Name = "rbSrcTypeSrc";
             this.rbSrcTypeSrc.Size = new System.Drawing.Size(71, 16);
             this.rbSrcTypeSrc.TabIndex = 0;
@@ -624,6 +626,17 @@
             this.panelBottom.Size = new System.Drawing.Size(584, 42);
             this.panelBottom.TabIndex = 19;
             // 
+            // rbSrcTypeEtc
+            // 
+            this.rbSrcTypeEtc.AutoSize = true;
+            this.rbSrcTypeEtc.Location = new System.Drawing.Point(91, 20);
+            this.rbSrcTypeEtc.Name = "rbSrcTypeEtc";
+            this.rbSrcTypeEtc.Size = new System.Drawing.Size(71, 16);
+            this.rbSrcTypeEtc.TabIndex = 3;
+            this.rbSrcTypeEtc.TabStop = true;
+            this.rbSrcTypeEtc.Text = "기타파일";
+            this.rbSrcTypeEtc.UseVisualStyleBackColor = true;
+            // 
             // QuickAutoSpsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -718,6 +731,7 @@
         private System.Windows.Forms.PictureBox pbProgress;
         private System.Windows.Forms.RadioButton rbSrcTypeProject;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.RadioButton rbSrcTypeEtc;
     }
 }
 

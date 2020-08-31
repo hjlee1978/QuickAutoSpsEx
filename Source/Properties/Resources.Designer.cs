@@ -63,6 +63,16 @@ namespace FileInfoExtractor.Properties {
         /// <summary>
         ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static byte[] etc {
+            get {
+                object obj = ResourceManager.GetObject("etc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Byte[] 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static byte[] execute {
             get {
                 object obj = ResourceManager.GetObject("execute", resourceCulture);
