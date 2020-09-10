@@ -159,6 +159,49 @@ namespace FileInfoExtractor
             this.Text = $"{System.Windows.Forms.Application.ProductName} v{System.Windows.Forms.Application.ProductVersion}";
         }
 
+        private void ChangeExtension()
+        {
+            if (Properties.LastInfo.Default.bRstTypeHwp == true)
+            {
+                tbResultName.Text = Path.ChangeExtension(tbResultName.Text, "hwp");
+            }
+            else
+            {
+                tbResultName.Text = Path.ChangeExtension(tbResultName.Text, "xls");
+            }
+        }
+
+        private void ChangeResultFilename(string path)
+        {
+            tbExtractPath.Text = path;
+            Properties.LastInfo.Default.strSrcPath = tbExtractPath.Text;
+
+            //파일경로 삭제문자열 자동 설정
+            tbPathDel.Text = tbExtractPath.Text;
+            tbPathHead.Text = "저장위치: \\" + Path.GetFileName(tbPathDel.Text);
+
+            if (checkBoxAutoFilename.Checked)
+            {
+                string resultName = Path.GetFileName(tbPathDel.Text);
+                string sourceType = GetSourceTypeText();
+                if (string.IsNullOrEmpty(sourceType) == false)
+                {
+                    resultName += "_" + sourceType;
+                }
+                tbResultName.Text = resultName;
+
+                ChangeExtension();
+            }
+            else if(string.IsNullOrEmpty(tbResultName.Text))
+            {
+                tbResultName.Text = "Result_" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
+                ChangeExtension();
+            }
+
+            Properties.LastInfo.Default.strTrimPath = tbPathDel.Text;
+            Properties.LastInfo.Default.Save();
+        }
+
         private void ExtractDirPath_Click(object sender, EventArgs e)
         {
             using (CommonOpenFileDialog dialog = new CommonOpenFileDialog())
@@ -178,14 +221,7 @@ namespace FileInfoExtractor
 
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
-                    tbExtractPath.Text = dialog.FileName;
-                    Properties.LastInfo.Default.strSrcPath = tbExtractPath.Text;
-
-                    //파일경로 삭제문자열 자동 설정
-                    tbPathDel.Text = tbExtractPath.Text;
-                    Properties.LastInfo.Default.strTrimPath = tbPathDel.Text;
-
-                    Properties.LastInfo.Default.Save();
+                    ChangeResultFilename(dialog.FileName);
                 }
             }
         }
@@ -230,6 +266,30 @@ namespace FileInfoExtractor
                     Properties.LastInfo.Default.Save();
                 }
             }
+        }
+
+        private string GetSourceTypeText()
+        {
+            string text = string.Empty;
+
+            if(rbSrcTypeExe.Checked)
+            {
+                text = "EXE";
+            }
+            else if(rbSrcTypeProject.Checked)
+            {
+                text = "PRJ";
+            }
+            else if(rbSrcTypeSrc.Checked)
+            {
+                text = "SRC";
+            }
+            else if(rbSrcTypeEtc.Checked)
+            {
+                text = "ETC";
+            }
+
+            return text;
         }
 
         /// <summary>
@@ -890,20 +950,6 @@ namespace FileInfoExtractor
                 rbRetTypeExl.Select();
             }
 
-            tbResultName.Text = string.IsNullOrEmpty(Properties.LastInfo.Default.strDstFile)
-                ? "Result"
-                : Properties.LastInfo.Default.strDstFile;
-
-            if (Properties.LastInfo.Default.bRstTypeHwp == true)
-            {
-                tbResultName.Text = Path.ChangeExtension(tbResultName.Text, "hwp");
-            }
-            else
-            {
-                tbResultName.Text = Path.ChangeExtension(tbResultName.Text, "xls");
-            }
-
-
             if (string.IsNullOrEmpty(Properties.LastInfo.Default.strDstPath))
             {
                 tbResultPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -912,6 +958,8 @@ namespace FileInfoExtractor
             {
                 tbResultPath.Text = Properties.LastInfo.Default.strDstPath;
             }
+
+            ChangeResultFilename(tbExtractPath.Text);
 
             if (string.IsNullOrEmpty(Properties.LastInfo.Default.strExeNumberBase) == false)
             {
@@ -1013,6 +1061,10 @@ namespace FileInfoExtractor
             axHwpCtrl.Run("TableColBegin");
             axHwpCtrl.Run("TableCellBlockExtend");
             axHwpCtrl.Run("TableColEnd");
+            if (checkBoxMergeSkip.Checked)
+            {
+                axHwpCtrl.Run("TableLeftCell");
+            }
             axHwpCtrl.Run("TableMergeCell");
         }
 
@@ -1612,6 +1664,11 @@ namespace FileInfoExtractor
             catch (Exception)
             {
             }
+        }
+
+        private void rbSrcTypeExe_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeResultFilename(tbExtractPath.Text);
         }
     }
 }

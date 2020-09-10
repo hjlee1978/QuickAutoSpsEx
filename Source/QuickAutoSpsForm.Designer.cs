@@ -47,6 +47,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.panelMiddle = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBoxMergeSkip = new System.Windows.Forms.CheckBox();
             this.buttonConfig = new System.Windows.Forms.Button();
             this.tbEtcNumberBase = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -64,6 +65,7 @@
             this.tbExeNumberbase = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbSrcTypeEtc = new System.Windows.Forms.RadioButton();
             this.rbSrcTypeProject = new System.Windows.Forms.RadioButton();
             this.rbSrcTypeExe = new System.Windows.Forms.RadioButton();
             this.rbSrcTypeSrc = new System.Windows.Forms.RadioButton();
@@ -84,7 +86,7 @@
             this.axHwpCtrl = new AxHWPCONTROLLib.AxHwpCtrl();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.rbSrcTypeEtc = new System.Windows.Forms.RadioButton();
+            this.checkBoxAutoFilename = new System.Windows.Forms.CheckBox();
             this.panelTopic.SuspendLayout();
             this.panelMiddle.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -239,6 +241,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.checkBoxMergeSkip);
             this.groupBox3.Controls.Add(this.buttonConfig);
             this.groupBox3.Controls.Add(this.tbEtcNumberBase);
             this.groupBox3.Controls.Add(this.label13);
@@ -262,6 +265,17 @@
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "정보 추출 설정";
+            // 
+            // checkBoxMergeSkip
+            // 
+            this.checkBoxMergeSkip.AutoSize = true;
+            this.checkBoxMergeSkip.Location = new System.Drawing.Point(183, 140);
+            this.checkBoxMergeSkip.Margin = new System.Windows.Forms.Padding(1);
+            this.checkBoxMergeSkip.Name = "checkBoxMergeSkip";
+            this.checkBoxMergeSkip.Size = new System.Drawing.Size(184, 16);
+            this.checkBoxMergeSkip.TabIndex = 17;
+            this.checkBoxMergeSkip.Text = "파일경로 마지막 셀 통합 제외";
+            this.checkBoxMergeSkip.UseVisualStyleBackColor = true;
             // 
             // buttonConfig
             // 
@@ -423,6 +437,18 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "소스 타입";
             // 
+            // rbSrcTypeEtc
+            // 
+            this.rbSrcTypeEtc.AutoSize = true;
+            this.rbSrcTypeEtc.Location = new System.Drawing.Point(91, 20);
+            this.rbSrcTypeEtc.Name = "rbSrcTypeEtc";
+            this.rbSrcTypeEtc.Size = new System.Drawing.Size(71, 16);
+            this.rbSrcTypeEtc.TabIndex = 3;
+            this.rbSrcTypeEtc.TabStop = true;
+            this.rbSrcTypeEtc.Text = "기타파일";
+            this.rbSrcTypeEtc.UseVisualStyleBackColor = true;
+            this.rbSrcTypeEtc.CheckedChanged += new System.EventHandler(this.rbSrcTypeExe_CheckedChanged);
+            // 
             // rbSrcTypeProject
             // 
             this.rbSrcTypeProject.AutoSize = true;
@@ -433,6 +459,7 @@
             this.rbSrcTypeProject.TabStop = true;
             this.rbSrcTypeProject.Text = "프로젝트";
             this.rbSrcTypeProject.UseVisualStyleBackColor = true;
+            this.rbSrcTypeProject.CheckedChanged += new System.EventHandler(this.rbSrcTypeExe_CheckedChanged);
             // 
             // rbSrcTypeExe
             // 
@@ -444,6 +471,7 @@
             this.rbSrcTypeExe.TabStop = true;
             this.rbSrcTypeExe.Text = "실행파일";
             this.rbSrcTypeExe.UseVisualStyleBackColor = true;
+            this.rbSrcTypeExe.CheckedChanged += new System.EventHandler(this.rbSrcTypeExe_CheckedChanged);
             // 
             // rbSrcTypeSrc
             // 
@@ -455,12 +483,14 @@
             this.rbSrcTypeSrc.TabStop = true;
             this.rbSrcTypeSrc.Text = "소스파일";
             this.rbSrcTypeSrc.UseVisualStyleBackColor = true;
+            this.rbSrcTypeSrc.CheckedChanged += new System.EventHandler(this.rbSrcTypeExe_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.checkBoxAutoFilename);
             this.groupBox1.Controls.Add(this.groupBox5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -626,16 +656,16 @@
             this.panelBottom.Size = new System.Drawing.Size(584, 42);
             this.panelBottom.TabIndex = 19;
             // 
-            // rbSrcTypeEtc
+            // checkBoxAutoFilename
             // 
-            this.rbSrcTypeEtc.AutoSize = true;
-            this.rbSrcTypeEtc.Location = new System.Drawing.Point(91, 20);
-            this.rbSrcTypeEtc.Name = "rbSrcTypeEtc";
-            this.rbSrcTypeEtc.Size = new System.Drawing.Size(71, 16);
-            this.rbSrcTypeEtc.TabIndex = 3;
-            this.rbSrcTypeEtc.TabStop = true;
-            this.rbSrcTypeEtc.Text = "기타파일";
-            this.rbSrcTypeEtc.UseVisualStyleBackColor = true;
+            this.checkBoxAutoFilename.AutoSize = true;
+            this.checkBoxAutoFilename.Location = new System.Drawing.Point(461, 111);
+            this.checkBoxAutoFilename.Margin = new System.Windows.Forms.Padding(1);
+            this.checkBoxAutoFilename.Name = "checkBoxAutoFilename";
+            this.checkBoxAutoFilename.Size = new System.Drawing.Size(72, 16);
+            this.checkBoxAutoFilename.TabIndex = 13;
+            this.checkBoxAutoFilename.Text = "자동생성";
+            this.checkBoxAutoFilename.UseVisualStyleBackColor = true;
             // 
             // QuickAutoSpsForm
             // 
@@ -732,6 +762,8 @@
         private System.Windows.Forms.RadioButton rbSrcTypeProject;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.RadioButton rbSrcTypeEtc;
+        private System.Windows.Forms.CheckBox checkBoxMergeSkip;
+        private System.Windows.Forms.CheckBox checkBoxAutoFilename;
     }
 }
 
